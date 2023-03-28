@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace LivroReceitasDigital
 {
-    internal class Receita
+    public class Receita
     {
-        private String Nome;
-        private String Corpo;
+        public String Nome;
+        public String Corpo;
     }
 }
