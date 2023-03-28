@@ -32,6 +32,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.NomeR = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.SalvarR = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // CorpoR
@@ -67,17 +68,29 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Nome Receita";
             // 
+            // SalvarR
+            // 
+            this.SalvarR.Location = new System.Drawing.Point(395, 432);
+            this.SalvarR.Name = "SalvarR";
+            this.SalvarR.Size = new System.Drawing.Size(121, 23);
+            this.SalvarR.TabIndex = 8;
+            this.SalvarR.Text = "Salvar Mudanças";
+            this.SalvarR.UseVisualStyleBackColor = true;
+            this.SalvarR.Click += new System.EventHandler(this.SalvarR_Click);
+            // 
             // FormExibir
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(534, 450);
+            this.ClientSize = new System.Drawing.Size(525, 467);
+            this.Controls.Add(this.SalvarR);
             this.Controls.Add(this.CorpoR);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.NomeR);
             this.Controls.Add(this.label1);
             this.Name = "FormExibir";
             this.Text = "FormExibir";
+            this.Load += new System.EventHandler(this.FormExibir_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -89,5 +102,6 @@
         private Label label2;
         private TextBox NomeR;
         private Label label1;
+        private Button SalvarR;
     }
 }
