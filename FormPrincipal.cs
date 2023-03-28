@@ -22,26 +22,41 @@ namespace LivroReceitasDigital
 
         }
 
+        //Envia um item objeto Receita ao FormExibir
         private void AbrirReceita(Receita receita)
         {
-            //envia obj Receita e abre FormExibir preenchido com ele
-        } 
+            FormExibir frm = new FormExibir(receita);
+            frm.Show();
 
+            //O QUE FAZER NO FORMEXIBIR
+            //public Form2(string qs)
+            //{
+            //    InitializeComponent();
+            //    textBox1.Text = qs;
+
+            //}
+        }
+
+        //Cria um objeto Receita vazio, envia esse objeto ao FormExibir
         private void CriarReceita()
         {
-            //a.cria um obj Receita na lista(vazio)
-            //b.envia esse obj pro FormExibir
-            //c.abre FormExibir pra editar
+            List<Receita> receita = new List<Receita>();
+            FormExibir frm = new FormExibir(receita);
+            frm.Show();
         }
 
+        //Deleta um objeto Receita de ListaReceitas e sobre-escreve o arquivo
         private void ExcluirReceita(Receita receita)
         {
-            //a.Deleta a receita da lista, sobrescrever o arquivo
+            ListaReceitas.Remove(receita);
+            SobrescreverArquivo();
         }
 
+        //Sobre-escreve o arquivo JSON com ListaReceitas em seu estado atual
         private void SobrescreverArquivo()
         {
-            //a.pega a lista, transforma em JSON, salva
+            string receitaJson = Newtonsoft.Json.JsonConvert.SerializeObject(ListaReceitas);
+            File.WriteAllText(Directory.GetCurrentDirectory() + "dados.json", receitaJson);
         }
 
         private List<Receita> GetReceitas(FileStream arquivo)
