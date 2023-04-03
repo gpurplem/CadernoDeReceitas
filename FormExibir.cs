@@ -10,29 +10,41 @@ using System.Windows.Forms;
 
 namespace LivroReceitasDigital
 {
-    public partial class FormExibir : Form
+    public partial class FormExibir : Form, IDisposable
     {
+        Receita receita;
         public FormExibir(Receita receita)
         {
             InitializeComponent();
+            this.receita = receita;
+            ExibirReceita();
         }
 
-        private void FormExibir_Load(object sender, EventArgs e, Receita ItemReceita)
+        private void FormExibir_Load(object sender, EventArgs e)
         {
-            NomeR.Text = ItemReceita.Nome;
-            CorpoR.Text = ItemReceita.Corpo;
-
+            
         }
 
-        private void AtualizaR(Receita ItemReceita)
+        private void ExibirReceita()
         {
-            ItemReceita.Nome = NomeR.Text;
-            ItemReceita.Corpo = CorpoR.Text;
+            NomeR.Text = receita.Nome;
+            CorpoR.Text = receita.Corpo;
         }
 
-        private void SalvarR_Click(object sender, EventArgs e, Receita ItemReceita)
+        private void AtualizaR()
         {
-            AtualizaR(ItemReceita);
+            receita.Nome = NomeR.Text;
+            receita.Corpo = CorpoR.Text;
+        }
+
+        //private void SalvarR_Click(object sender, EventArgs e, Receita ItemReceita)
+        //{
+        //    AtualizaR(ItemReceita);
+        //}
+
+        private void SalvarR_Click(object sender, EventArgs e)
+        {
+            AtualizaR();
         }
     }
 }

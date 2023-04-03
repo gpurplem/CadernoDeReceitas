@@ -10,11 +10,12 @@ namespace LivroReceitasDigital
         public FormPrincipal()
         {
             InitializeComponent();
-        }
+            //ve se existe
+            //se existe
+            ListaReceitas=Newtonsoft.Json.JsonConvert.DeserializeObject<List<Receita>>(File.ReadAllText(Directory.GetCurrentDirectory() + "/dados.json"));
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
+            //se nao existe
+            //criar um vazio e não escrever
         }
 
         private void FormPrincipal_Load(object sender, EventArgs e)
@@ -37,15 +38,6 @@ namespace LivroReceitasDigital
             //}
         }
 
-        //Cria um objeto Receita vazio, envia esse objeto ao FormExibir
-        private void CriarReceita()
-        {
-            //List<Receita> receita = new List<Receita>();
-            Receita receita = null;
-            FormExibir frm = new FormExibir(receita);
-            frm.Show();
-        }
-
         //Deleta um objeto Receita de ListaReceitas e sobre-escreve o arquivo
         private void ExcluirReceita(Receita receita)
         {
@@ -57,7 +49,7 @@ namespace LivroReceitasDigital
         private void SobrescreverArquivo()
         {
             string receitaJson = Newtonsoft.Json.JsonConvert.SerializeObject(ListaReceitas);
-            File.WriteAllText(Directory.GetCurrentDirectory() + "dados.json", receitaJson);
+            File.WriteAllText(Directory.GetCurrentDirectory() + "/dados.json", receitaJson);
         }
 
         private List<Receita> GetReceitas(FileStream arquivo)
@@ -66,5 +58,16 @@ namespace LivroReceitasDigital
             return new List<Receita>();
         }
 
+        //Cria um objeto Receita vazio, envia esse objeto ao FormExibir, adiciona em ListaReceitas (ram), ordena, sobreescreve o arquivo.
+        private void btnCriar_Click(object sender, EventArgs e)
+        {         
+            Receita receita = new Receita();
+            FormExibir frm = new FormExibir(receita);
+            frm.ShowDialog();
+            ListaReceitas.Add(receita);
+            //verifica se salvou nome vazio
+                //ordenar a lista
+                SobrescreverArquivo();
+        }
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCriar = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -45,15 +45,15 @@
             this.dataGridView1.Size = new System.Drawing.Size(776, 310);
             this.dataGridView1.TabIndex = 0;
             // 
-            // button1
+            // btnCriar
             // 
-            this.button1.Location = new System.Drawing.Point(306, 351);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(200, 60);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Criar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnCriar.Location = new System.Drawing.Point(306, 351);
+            this.btnCriar.Name = "btnCriar";
+            this.btnCriar.Size = new System.Drawing.Size(200, 60);
+            this.btnCriar.TabIndex = 1;
+            this.btnCriar.Text = "Criar";
+            this.btnCriar.UseVisualStyleBackColor = true;
+            this.btnCriar.Click += new System.EventHandler(this.btnCriar_Click);
             // 
             // button2
             // 
@@ -80,7 +80,7 @@
             this.ClientSize = new System.Drawing.Size(800, 434);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnCriar);
             this.Controls.Add(this.dataGridView1);
             this.Name = "FormPrincipal";
             this.Text = "Caderno de Receitas";
@@ -93,7 +93,7 @@
         #endregion
 
         private DataGridView dataGridView1;
-        private Button button1;
+        private Button btnCriar;
         private Button button2;
         private Button button3;
     }
