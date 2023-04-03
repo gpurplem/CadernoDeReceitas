@@ -76,7 +76,7 @@
             this.SalvarR.TabIndex = 8;
             this.SalvarR.Text = "Salvar Mudanças";
             this.SalvarR.UseVisualStyleBackColor = true;
-            this.SalvarR.Click += new System.EventHandler(this.SalvarR_Click);
+            //this.SalvarR.Click += new System.EventHandler(this.SalvarR_Click);
             // 
             // FormExibir
             // 
@@ -90,7 +90,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FormExibir";
             this.Text = "FormExibir";
-            this.Load += new System.EventHandler(this.FormExibir_Load);
+            //this.Load += new System.EventHandler(this.FormExibir_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

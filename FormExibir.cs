@@ -17,22 +17,22 @@ namespace LivroReceitasDigital
             InitializeComponent();
         }
 
-        private void FormExibir_Load(object sender, EventArgs e)
+        private void FormExibir_Load(object sender, EventArgs e, Receita ItemReceita)
         {
             NomeR.Text = ItemReceita.Nome;
             CorpoR.Text = ItemReceita.Corpo;
 
         }
 
-        private void AtualizaR()
+        private void AtualizaR(Receita ItemReceita)
         {
             ItemReceita.Nome = NomeR.Text;
             ItemReceita.Corpo = CorpoR.Text;
         }
 
-        private void SalvarR_Click(object sender, EventArgs e)
+        private void SalvarR_Click(object sender, EventArgs e, Receita ItemReceita)
         {
-            AtualizaR();
+            AtualizaR(ItemReceita);
         }
     }
 }

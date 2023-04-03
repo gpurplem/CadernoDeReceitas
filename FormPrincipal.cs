@@ -40,7 +40,8 @@ namespace LivroReceitasDigital
         //Cria um objeto Receita vazio, envia esse objeto ao FormExibir
         private void CriarReceita()
         {
-            List<Receita> receita = new List<Receita>();
+            //List<Receita> receita = new List<Receita>();
+            Receita receita = null;
             FormExibir frm = new FormExibir(receita);
             frm.Show();
         }
