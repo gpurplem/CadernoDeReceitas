@@ -90,9 +90,9 @@ namespace LivroReceitasDigital
             if(dgvListaReceitas.SelectedRows.Count > 0){
 
                 DataGridViewRow row = dgvListaReceitas.SelectedRows[0];
-                string fileName = row.Cells[1].Value.ToString();
+                String nomeReceita = row.Cells[0].Value.ToString();
                 dgvListaReceitas.Rows.RemoveAt(row.Index);
-                File.Delete(fileName);
+                File.Delete(nomeReceita);
             }
         }
 
