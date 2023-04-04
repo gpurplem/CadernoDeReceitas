@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             this.dgvListaReceitas = new System.Windows.Forms.DataGridView();
+            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.receitaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnCriar = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAbrir = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaReceitas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.receitaBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -53,8 +53,18 @@
             this.dgvListaReceitas.ReadOnly = true;
             this.dgvListaReceitas.RowHeadersWidth = 62;
             this.dgvListaReceitas.RowTemplate.Height = 33;
+            this.dgvListaReceitas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvListaReceitas.Size = new System.Drawing.Size(776, 310);
             this.dgvListaReceitas.TabIndex = 0;
+            // 
+            // nomeDataGridViewTextBoxColumn
+            // 
+            this.nomeDataGridViewTextBoxColumn.DataPropertyName = "Nome";
+            this.nomeDataGridViewTextBoxColumn.HeaderText = "Nome";
+            this.nomeDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
+            this.nomeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nomeDataGridViewTextBoxColumn.Width = 700;
             // 
             // receitaBindingSource
             // 
@@ -70,14 +80,15 @@
             this.btnCriar.UseVisualStyleBackColor = true;
             this.btnCriar.Click += new System.EventHandler(this.btnCriar_Click);
             // 
-            // button2
+            // btnAbrir
             // 
-            this.button2.Location = new System.Drawing.Point(589, 352);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(200, 60);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Abrir";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAbrir.Location = new System.Drawing.Point(589, 352);
+            this.btnAbrir.Name = "btnAbrir";
+            this.btnAbrir.Size = new System.Drawing.Size(200, 60);
+            this.btnAbrir.TabIndex = 2;
+            this.btnAbrir.Text = "Abrir";
+            this.btnAbrir.UseVisualStyleBackColor = true;
+            this.btnAbrir.Click += new System.EventHandler(this.btnAbrir_Click);
             // 
             // button3
             // 
@@ -89,22 +100,13 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // nomeDataGridViewTextBoxColumn
-            // 
-            this.nomeDataGridViewTextBoxColumn.DataPropertyName = "Nome";
-            this.nomeDataGridViewTextBoxColumn.HeaderText = "Nome";
-            this.nomeDataGridViewTextBoxColumn.MinimumWidth = 8;
-            this.nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
-            this.nomeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.nomeDataGridViewTextBoxColumn.Width = 700;
-            // 
             // FormPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 433);
             this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnAbrir);
             this.Controls.Add(this.btnCriar);
             this.Controls.Add(this.dgvListaReceitas);
             this.Name = "FormPrincipal";
@@ -120,7 +122,7 @@
 
         private DataGridView dgvListaReceitas;
         private Button btnCriar;
-        private Button button2;
+        private Button btnAbrir;
         private Button button3;
         private BindingSource receitaBindingSource;
         private DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;

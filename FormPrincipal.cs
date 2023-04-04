@@ -3,6 +3,7 @@ using System;
 using System.ComponentModel;
 using System.Security.Cryptography;
 using System.Security.Cryptography.Xml;
+using System.Windows.Forms;
 
 namespace LivroReceitasDigital
 {
@@ -11,7 +12,7 @@ namespace LivroReceitasDigital
         private List<Receita> ListaReceitas;
         public bool HouveModificacao = false;
 
-        //Cria/carrega ListaReceitas.
+        // Cria/carrega ListaReceitas.
         public FormPrincipal()
         {
             InitializeComponent();
@@ -38,20 +39,6 @@ namespace LivroReceitasDigital
 
         }
 
-        //Envia um item objeto Receita ao FormExibir
-        private void AbrirReceita(Receita receita)
-        {
-            FormExibir frm = new FormExibir(receita);
-            frm.Show();
-
-            //O QUE FAZER NO FORMEXIBIR
-            //public Form2(string qs)
-            //{
-            //    InitializeComponent();
-            //    textBox1.Text = qs;
-
-            //}
-        }
 
         //Deleta um objeto Receita de ListaReceitas e sobre-escreve o arquivo
         private void ExcluirReceita(Receita receita)
@@ -106,6 +93,24 @@ namespace LivroReceitasDigital
                 string fileName = row.Cells[1].Value.ToString();
                 dgvListaReceitas.Rows.RemoveAt(row.Index);
                 File.Delete(fileName);
+            }
+        }
+
+        //Envia um item objeto Receita ao FormExibir
+        private void btnAbrir_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = dgvListaReceitas.SelectedRows[0];
+            String nomeReceita = row.Cells[0].Value.ToString();
+            Receita receita = ListaReceitas.Where(i => i.Nome.Equals(nomeReceita)).First();
+            String corpoReceita = receita.Corpo.ToString();
+            FormExibir frm = new FormExibir(receita);
+            frm.ShowDialog();
+
+            if (!receita.Corpo.Equals(corpoReceita) | !receita.Nome.Equals(nomeReceita))
+            {
+                SobrescreverArquivo();
+                AtualizarListaReceitas();
+                ExibirListaReceitas();
             }
         }
     }
