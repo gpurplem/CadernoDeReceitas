@@ -83,5 +83,16 @@ namespace LivroReceitasDigital
         {
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if(dgvListaReceitas.SelectedRows.Count > 0){
+
+                DataGridViewRow row = dgvListaReceitas.SelectedRows[0];
+                string fileName = row.Cells[1].Value.ToString();
+                dgvListaReceitas.Rows.RemoveAt(row.Index);
+                File.Delete(fileName);
+            }
+        }
     }
 }
