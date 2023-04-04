@@ -29,27 +29,27 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvListaReceitas = new System.Windows.Forms.DataGridView();
             this.receitaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnCriar = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListaReceitas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.receitaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvListaReceitas
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 33;
-            this.dataGridView1.Size = new System.Drawing.Size(776, 310);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvListaReceitas.AllowUserToAddRows = false;
+            this.dgvListaReceitas.AllowUserToDeleteRows = false;
+            this.dgvListaReceitas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListaReceitas.Location = new System.Drawing.Point(12, 12);
+            this.dgvListaReceitas.Name = "dgvListaReceitas";
+            this.dgvListaReceitas.ReadOnly = true;
+            this.dgvListaReceitas.RowHeadersWidth = 62;
+            this.dgvListaReceitas.RowTemplate.Height = 33;
+            this.dgvListaReceitas.Size = new System.Drawing.Size(776, 310);
+            this.dgvListaReceitas.TabIndex = 0;
             // 
             // receitaBindingSource
             // 
@@ -91,11 +91,11 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnCriar);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvListaReceitas);
             this.Name = "FormPrincipal";
             this.Text = "Caderno de Receitas";
             this.Load += new System.EventHandler(this.FormPrincipal_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListaReceitas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.receitaBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -103,7 +103,7 @@
 
         #endregion
 
-        private DataGridView dataGridView1;
+        private DataGridView dgvListaReceitas;
         private Button btnCriar;
         private Button button2;
         private Button button3;
