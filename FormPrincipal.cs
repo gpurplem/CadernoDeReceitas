@@ -1,11 +1,14 @@
+using System.Collections.Generic;
+using System;
 using System.ComponentModel;
+using System.Security.Cryptography;
 using System.Security.Cryptography.Xml;
 
 namespace LivroReceitasDigital
 {
     public partial class FormPrincipal : Form
     {
-        private BindingList<Receita> ListaReceitas;
+        private List<Receita> ListaReceitas;
         public bool HouveModificacao = false;
 
         //Cria/carrega ListaReceitas.
@@ -15,12 +18,19 @@ namespace LivroReceitasDigital
 
             if(File.Exists(Directory.GetCurrentDirectory() + "/dados.json"))
             {
-                ListaReceitas = Newtonsoft.Json.JsonConvert.DeserializeObject<BindingList<Receita>>(File.ReadAllText(Directory.GetCurrentDirectory() + "/dados.json"));
+                AtualizarListaReceitas();
 
             } else
             {
-                ListaReceitas = new BindingList<Receita>();
+                ListaReceitas = new List<Receita>();
             }
+
+            ExibirListaReceitas();
+        }
+
+        private void AtualizarListaReceitas()
+        {
+            ListaReceitas = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Receita>>(File.ReadAllText(Directory.GetCurrentDirectory() + "/dados.json"));
         }
 
         private void FormPrincipal_Load(object sender, EventArgs e)
@@ -76,12 +86,16 @@ namespace LivroReceitasDigital
                 ListaReceitas.Add(receita);
                 //ordenar.
                 SobrescreverArquivo();
+                AtualizarListaReceitas();
+                ExibirListaReceitas();
             }
         }
 
+        //Carrega o datagridview com a lista de receitas.
         private void ExibirListaReceitas()
         {
-
+            dgvListaReceitas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvListaReceitas.DataSource = ListaReceitas;
         }
 
         private void button3_Click(object sender, EventArgs e)

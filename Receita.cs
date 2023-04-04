@@ -8,7 +8,7 @@ namespace LivroReceitasDigital
 {
     public class Receita
     {
-        public String Nome;
-        public String Corpo;
+        public String Nome { get; set; }
+        public String Corpo { get; set; }
     }
 }

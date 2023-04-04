@@ -34,6 +34,7 @@
             this.btnCriar = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.nomeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListaReceitas)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.receitaBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -42,22 +43,28 @@
             // 
             this.dgvListaReceitas.AllowUserToAddRows = false;
             this.dgvListaReceitas.AllowUserToDeleteRows = false;
+            this.dgvListaReceitas.AutoGenerateColumns = false;
             this.dgvListaReceitas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListaReceitas.Location = new System.Drawing.Point(8, 7);
-            this.dgvListaReceitas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvListaReceitas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nomeDataGridViewTextBoxColumn});
+            this.dgvListaReceitas.DataSource = this.receitaBindingSource;
+            this.dgvListaReceitas.Location = new System.Drawing.Point(11, 12);
             this.dgvListaReceitas.Name = "dgvListaReceitas";
             this.dgvListaReceitas.ReadOnly = true;
             this.dgvListaReceitas.RowHeadersWidth = 62;
             this.dgvListaReceitas.RowTemplate.Height = 33;
-            this.dgvListaReceitas.Size = new System.Drawing.Size(543, 186);
+            this.dgvListaReceitas.Size = new System.Drawing.Size(776, 310);
             this.dgvListaReceitas.TabIndex = 0;
+            // 
+            // receitaBindingSource
+            // 
+            this.receitaBindingSource.DataSource = typeof(LivroReceitasDigital.Receita);
             // 
             // btnCriar
             // 
-            this.btnCriar.Location = new System.Drawing.Point(214, 211);
-            this.btnCriar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCriar.Location = new System.Drawing.Point(306, 352);
             this.btnCriar.Name = "btnCriar";
-            this.btnCriar.Size = new System.Drawing.Size(140, 36);
+            this.btnCriar.Size = new System.Drawing.Size(200, 60);
             this.btnCriar.TabIndex = 1;
             this.btnCriar.Text = "Criar";
             this.btnCriar.UseVisualStyleBackColor = true;
@@ -65,35 +72,41 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(412, 211);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Location = new System.Drawing.Point(589, 352);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(140, 36);
+            this.button2.Size = new System.Drawing.Size(200, 60);
             this.button2.TabIndex = 2;
             this.button2.Text = "Abrir";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(8, 211);
-            this.button3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button3.Location = new System.Drawing.Point(11, 352);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(140, 36);
+            this.button3.Size = new System.Drawing.Size(200, 60);
             this.button3.TabIndex = 3;
             this.button3.Text = "Excluir";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // nomeDataGridViewTextBoxColumn
+            // 
+            this.nomeDataGridViewTextBoxColumn.DataPropertyName = "Nome";
+            this.nomeDataGridViewTextBoxColumn.HeaderText = "Nome";
+            this.nomeDataGridViewTextBoxColumn.MinimumWidth = 8;
+            this.nomeDataGridViewTextBoxColumn.Name = "nomeDataGridViewTextBoxColumn";
+            this.nomeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.nomeDataGridViewTextBoxColumn.Width = 700;
+            // 
             // FormPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(560, 260);
+            this.ClientSize = new System.Drawing.Size(800, 433);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.btnCriar);
             this.Controls.Add(this.dgvListaReceitas);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormPrincipal";
             this.Text = "Caderno de Receitas";
             this.Load += new System.EventHandler(this.FormPrincipal_Load);
@@ -110,5 +123,6 @@
         private Button button2;
         private Button button3;
         private BindingSource receitaBindingSource;
+        private DataGridViewTextBoxColumn nomeDataGridViewTextBoxColumn;
     }
 }
