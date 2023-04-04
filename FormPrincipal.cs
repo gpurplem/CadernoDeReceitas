@@ -1,21 +1,26 @@
+using System.ComponentModel;
 using System.Security.Cryptography.Xml;
 
 namespace LivroReceitasDigital
 {
     public partial class FormPrincipal : Form
     {
-        private List<Receita> ListaReceitas;
+        private BindingList<Receita> ListaReceitas;
         public bool HouveModificacao = false;
 
+        //Cria/carrega ListaReceitas.
         public FormPrincipal()
         {
             InitializeComponent();
-            //ve se existe
-            //se existe
-            ListaReceitas=Newtonsoft.Json.JsonConvert.DeserializeObject<List<Receita>>(File.ReadAllText(Directory.GetCurrentDirectory() + "/dados.json"));
 
-            //se nao existe
-            //criar um vazio e não escrever
+            if(File.Exists(Directory.GetCurrentDirectory() + "/dados.json"))
+            {
+                ListaReceitas = Newtonsoft.Json.JsonConvert.DeserializeObject<BindingList<Receita>>(File.ReadAllText(Directory.GetCurrentDirectory() + "/dados.json"));
+
+            } else
+            {
+                ListaReceitas = new BindingList<Receita>();
+            }
         }
 
         private void FormPrincipal_Load(object sender, EventArgs e)
@@ -52,22 +57,31 @@ namespace LivroReceitasDigital
             File.WriteAllText(Directory.GetCurrentDirectory() + "/dados.json", receitaJson);
         }
 
-        private List<Receita> GetReceitas(FileStream arquivo)
-        {
-            //abre o arquivo json > cria uma lista de objetos Receitas com base no arquivo
-            return new List<Receita>();
-        }
+        //private List<Receita> GetReceitas(FileStream arquivo)
+        //{
+        //    //abre o arquivo json > cria uma lista de objetos Receitas com base no arquivo
+        //    return new List<Receita>();
+        //}
 
-        //Cria um objeto Receita vazio, envia esse objeto ao FormExibir, adiciona em ListaReceitas (ram), ordena, sobreescreve o arquivo.
+
+        //Cria objeto Receita, envia ao FormExibir, adiciona a ListaReceitas, ordena, sobreescreve arquivo.
         private void btnCriar_Click(object sender, EventArgs e)
         {         
             Receita receita = new Receita();
             FormExibir frm = new FormExibir(receita);
             frm.ShowDialog();
-            ListaReceitas.Add(receita);
-            //verifica se salvou nome vazio
-                //ordenar a lista
+            
+            if(receita.Nome.Length > 0)
+            {
+                ListaReceitas.Add(receita);
+                //ordenar.
                 SobrescreverArquivo();
+            }
+        }
+
+        private void ExibirListaReceitas()
+        {
+
         }
     }
 }
