@@ -64,8 +64,8 @@ namespace LivroReceitasDigital
             if(receita.Nome.Length > 0)
             {
                 ListaReceitas.Add(receita);
-                //ordenar. 
-                List<Receita> Ordenada = receita.OrderBy(p => p.nome).tolist();
+                
+                Ordenar(); 
                 SobrescreverArquivo();
                 AtualizarListaReceitas();
                 ExibirListaReceitas();
@@ -87,7 +87,8 @@ namespace LivroReceitasDigital
                 String nomeReceita = row.Cells[0].Value.ToString();
                 Receita receita = ListaReceitas.Where(i => i.Nome.Equals(nomeReceita)).First();
                 ListaReceitas.Remove(receita);
-                //ordenar
+                
+                Ordenar();
                 SobrescreverArquivo();
                 AtualizarListaReceitas();
                 ExibirListaReceitas();
@@ -106,11 +107,17 @@ namespace LivroReceitasDigital
 
             if (!receita.Corpo.Equals(corpoReceita) | !receita.Nome.Equals(nomeReceita))
             {
-                //ordenar
+                Ordenar();
                 SobrescreverArquivo();
                 AtualizarListaReceitas();
                 ExibirListaReceitas();
             }
+        }
+
+        private void Ordenar()
+        {
+            List<Receita> Ordenada = receita.OrderBy(p => p.nome).tolist();
+
         }
     }
 }
