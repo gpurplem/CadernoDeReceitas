@@ -10,5 +10,8 @@ namespace LivroReceitasDigital
     {
         public String Nome { get; set; }
         public String Corpo { get; set; }
+        public String Ingredientes { get; set;}
+        public String Autor { get; set; }
+        public String Dificuldade { get; set; }
     }
 }
