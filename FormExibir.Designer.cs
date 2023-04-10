@@ -47,6 +47,11 @@
             // 
             // ingredientesR
             // 
+            this.CorpoR.Location = new System.Drawing.Point(12, 83);
+            this.CorpoR.Multiline = true;
+            this.CorpoR.Name = "CorpoR";
+            this.CorpoR.Size = new System.Drawing.Size(508, 340);
+            this.CorpoR.TabIndex = 7;
             this.ingredientesR.Location = new System.Drawing.Point(17, 138);
             this.ingredientesR.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ingredientesR.Multiline = true;
@@ -57,9 +62,9 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(30, 108);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(21, 65);
             this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(81, 15);
             this.label2.Size = new System.Drawing.Size(110, 25);
             this.label2.TabIndex = 6;
             this.label2.Text = "Ingredientes";
@@ -67,28 +72,25 @@
             // 
             // NomeR
             // 
-            this.NomeR.Location = new System.Drawing.Point(17, 45);
-            this.NomeR.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.NomeR.Location = new System.Drawing.Point(12, 27);
             this.NomeR.Name = "NomeR";
-            this.NomeR.Size = new System.Drawing.Size(718, 31);
+            this.NomeR.Size = new System.Drawing.Size(504, 23);
             this.NomeR.TabIndex = 5;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(30, 15);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(21, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(121, 25);
+            this.label1.Size = new System.Drawing.Size(81, 15);
             this.label1.TabIndex = 4;
             this.label1.Text = "Nome Receita";
             // 
             // SalvarR
             // 
-            this.SalvarR.Location = new System.Drawing.Point(564, 720);
-            this.SalvarR.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.SalvarR.Location = new System.Drawing.Point(395, 432);
             this.SalvarR.Name = "SalvarR";
-            this.SalvarR.Size = new System.Drawing.Size(173, 38);
+            this.SalvarR.Size = new System.Drawing.Size(121, 23);
             this.SalvarR.TabIndex = 8;
             this.SalvarR.Text = "Salvar Mudanças";
             this.SalvarR.UseVisualStyleBackColor = true;
@@ -186,8 +188,9 @@
             // 
             // FormExibir
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(525, 467);
             this.ClientSize = new System.Drawing.Size(750, 778);
             this.Controls.Add(this.panelDificuldade);
             this.Controls.Add(this.label5);
@@ -200,9 +203,9 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.NomeR);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormExibir";
             this.Text = "FormExibir";
+            this.Load += new System.EventHandler(this.FormExibir_Load_1);
             this.panelDificuldade.ResumeLayout(false);
             this.panelDificuldade.PerformLayout();
             this.ResumeLayout(false);

@@ -13,6 +13,8 @@ namespace LivroReceitasDigital
     public partial class FormExibir : Form, IDisposable
     {
         Receita receita;
+
+        //Chama as funções e executa no form
         public FormExibir(Receita receita)
         {
             InitializeComponent();
@@ -25,6 +27,7 @@ namespace LivroReceitasDigital
             
         }
 
+        //Exibe a receita 
         private void ExibirReceita()
         {
             NomeR.Text = receita.Nome;
@@ -74,6 +77,11 @@ namespace LivroReceitasDigital
         private void SalvarR_Click(object sender, EventArgs e)
         {
             AtualizaR();
+        }
+
+        private void FormExibir_Load_1(object sender, EventArgs e)
+        {
+
         }
 
         private void label2_Click(object sender, EventArgs e)
