@@ -79,12 +79,12 @@ namespace LivroReceitasDigital
             AtualizaR();
         }
 
-        private void FormExibir_Load_1(object sender, EventArgs e)
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void FormExibir_Load_1(object sender, EventArgs e)
         {
 
         }

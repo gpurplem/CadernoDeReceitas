@@ -116,8 +116,7 @@ namespace LivroReceitasDigital
 
         private void Ordenar()
         {
-            List<Receita> Ordenada = receita.OrderBy(p => p.nome).tolist();
-
+            ListaReceitas = ListaReceitas.OrderBy(p => p.Nome).ToList();
         }
     }
 }
