@@ -9,8 +9,7 @@ namespace LivroReceitasDigital
 {
     public partial class FormPrincipal : Form
     {
-        private List<Receita> ListaReceitas;
-        public bool HouveModificacao = false;
+        private List<Receita> ListaReceitas;      
 
         // Cria/carrega ListaReceitas.
         public FormPrincipal()
@@ -20,7 +19,6 @@ namespace LivroReceitasDigital
             if(File.Exists(Directory.GetCurrentDirectory() + "/dados.json"))
             {
                 AtualizarListaReceitas();
-
             } else
             {
                 ListaReceitas = new List<Receita>();
@@ -29,6 +27,7 @@ namespace LivroReceitasDigital
             ExibirListaReceitas();
         }
 
+        // Atualiza lista de receitas na RAM.
         private void AtualizarListaReceitas()
         {
             ListaReceitas = Newtonsoft.Json.JsonConvert.DeserializeObject<List<Receita>>(File.ReadAllText(Directory.GetCurrentDirectory() + "/dados.json"));
@@ -53,13 +52,6 @@ namespace LivroReceitasDigital
             string receitaJson = Newtonsoft.Json.JsonConvert.SerializeObject(ListaReceitas);
             File.WriteAllText(Directory.GetCurrentDirectory() + "/dados.json", receitaJson);
         }
-
-        //private List<Receita> GetReceitas(FileStream arquivo)
-        //{
-        //    //abre o arquivo json > cria uma lista de objetos Receitas com base no arquivo
-        //    return new List<Receita>();
-        //}
-
 
         //Cria objeto Receita, envia ao FormExibir, adiciona a ListaReceitas, ordena, sobreescreve arquivo.
         private void btnCriar_Click(object sender, EventArgs e)
@@ -108,6 +100,7 @@ namespace LivroReceitasDigital
 
             if (!receita.Corpo.Equals(corpoReceita) | !receita.Nome.Equals(nomeReceita))
             {
+                //ordenar
                 SobrescreverArquivo();
                 AtualizarListaReceitas();
                 ExibirListaReceitas();
