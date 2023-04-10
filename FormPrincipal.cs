@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Security.Cryptography;
 using System.Security.Cryptography.Xml;
 using System.Windows.Forms;
+using System.Linq;
 
 namespace LivroReceitasDigital
 {
@@ -71,7 +72,8 @@ namespace LivroReceitasDigital
             if(receita.Nome.Length > 0)
             {
                 ListaReceitas.Add(receita);
-                //ordenar.
+                //ordenar. 
+                List<Receita> Ordenada = receita.OrderBy(p => p.nome).tolist();
                 SobrescreverArquivo();
                 AtualizarListaReceitas();
                 ExibirListaReceitas();
