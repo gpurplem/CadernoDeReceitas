@@ -83,8 +83,12 @@ namespace LivroReceitasDigital
 
                 DataGridViewRow row = dgvListaReceitas.SelectedRows[0];
                 String nomeReceita = row.Cells[0].Value.ToString();
-                dgvListaReceitas.Rows.RemoveAt(row.Index);
-                File.Delete(nomeReceita);
+                Receita receita = ListaReceitas.Where(i => i.Nome.Equals(nomeReceita)).First();
+                ListaReceitas.Remove(receita);
+                //ordenar
+                SobrescreverArquivo();
+                AtualizarListaReceitas();
+                ExibirListaReceitas();
             }
         }
 
