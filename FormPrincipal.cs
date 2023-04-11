@@ -5,12 +5,14 @@ using System.Security.Cryptography;
 using System.Security.Cryptography.Xml;
 using System.Windows.Forms;
 using System.Linq;
+using System.Text;
 
 namespace LivroReceitasDigital
 {
     public partial class FormPrincipal : Form
     {
-        private List<Receita> ListaReceitas;      
+        private List<Receita> ListaReceitas;
+        private bool houveModificacao = false;
 
         // Cria/carrega ListaReceitas.
         public FormPrincipal()
@@ -41,11 +43,11 @@ namespace LivroReceitasDigital
 
 
         //Deleta um objeto Receita de ListaReceitas e sobre-escreve o arquivo
-        private void ExcluirReceita(Receita receita)
-        {
-            ListaReceitas.Remove(receita);
-            SobrescreverArquivo();
-        }
+        //private void ExcluirReceita(Receita receita)
+        //{
+        //    ListaReceitas.Remove(receita);
+        //    SobrescreverArquivo();
+        //}
 
         //Sobre-escreve o arquivo JSON com ListaReceitas em seu estado atual
         private void SobrescreverArquivo()
@@ -59,9 +61,9 @@ namespace LivroReceitasDigital
         {         
             Receita receita = new Receita();
             FormExibir frm = new FormExibir(receita);
-            frm.ShowDialog();
-            
-            if(receita.Nome.Length > 0)
+            var dialogResult = frm.ShowDialog();
+
+            if (dialogResult.ToString().Equals("Yes"))
             {
                 ListaReceitas.Add(receita);
                 
@@ -81,18 +83,6 @@ namespace LivroReceitasDigital
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if(dgvListaReceitas.SelectedRows.Count > 0){
-
-                DataGridViewRow row = dgvListaReceitas.SelectedRows[0];
-                String nomeReceita = row.Cells[0].Value.ToString();
-                Receita receita = ListaReceitas.Where(i => i.Nome.Equals(nomeReceita)).First();
-                ListaReceitas.Remove(receita);
-                
-                Ordenar();
-                SobrescreverArquivo();
-                AtualizarListaReceitas();
-                ExibirListaReceitas();
-            }
         }
 
         //Envia um item objeto Receita ao FormExibir
@@ -100,12 +90,14 @@ namespace LivroReceitasDigital
         {
             DataGridViewRow row = dgvListaReceitas.SelectedRows[0];
             String nomeReceita = row.Cells[0].Value.ToString();
+            
             Receita receita = ListaReceitas.Where(i => i.Nome.Equals(nomeReceita)).First();
+
             String corpoReceita = receita.Corpo.ToString();
             FormExibir frm = new FormExibir(receita);
-            frm.ShowDialog();
+            var dialogResult = frm.ShowDialog();
 
-            if (!receita.Corpo.Equals(corpoReceita) | !receita.Nome.Equals(nomeReceita))
+            if (dialogResult.ToString().Equals("Yes"))
             {
                 Ordenar();
                 SobrescreverArquivo();
@@ -117,6 +109,59 @@ namespace LivroReceitasDigital
         private void Ordenar()
         {
             ListaReceitas = ListaReceitas.OrderBy(p => p.Nome).ToList();
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLimparPesquisa_Click(object sender, EventArgs e)
+        {
+            textPesquisaTitulo.Text = string.Empty;
+            textPesquisaIngrediente.Text = string.Empty;
+            rdPesquisaFacil.Checked = false;
+            rdPesquisaMedia.Checked = false;
+            rdPesquisaDificil.Checked = false;
+            AtualizarListaReceitas();
+            ExibirListaReceitas();
+        }
+
+        private void btnPesquisarDificuldade_Click(object sender, EventArgs e)
+        {
+            String dificuldade = "";
+
+            if (rdPesquisaFacil.Checked)
+            {
+               dificuldade = "Fácil";
+            }
+            else if (rdPesquisaMedia.Checked)
+            {
+                dificuldade = "Média";
+            }
+            else if (rdPesquisaDificil.Checked)
+            {
+                dificuldade = "Difícil";
+            }
+
+            dgvListaReceitas.DataSource = ListaReceitas.Where(i => i.Dificuldade.Equals(dificuldade)).ToList();
+        }
+
+        private void btnExcluirClick(object sender, EventArgs e)
+        {
+            if (dgvListaReceitas.SelectedRows.Count > 0)
+            {
+
+                DataGridViewRow row = dgvListaReceitas.SelectedRows[0];
+                String nomeReceita = row.Cells[0].Value.ToString();
+                Receita receita = ListaReceitas.Where(i => i.Nome.Equals(nomeReceita)).First();
+                ListaReceitas.Remove(receita);
+
+                Ordenar();
+                SobrescreverArquivo();
+                AtualizarListaReceitas();
+                ExibirListaReceitas();
+            }
         }
     }
 }

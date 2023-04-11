@@ -13,11 +13,13 @@ namespace LivroReceitasDigital
     public partial class FormExibir : Form, IDisposable
     {
         Receita receita;
+        private bool houveModificacao;
 
         //Chama as funções e executa no form
         public FormExibir(Receita receita)
         {
             InitializeComponent();
+            houveModificacao = false;
             this.receita = receita;
             ExibirReceita();
         }
@@ -72,7 +74,9 @@ namespace LivroReceitasDigital
             {
                 receita.Dificuldade = "Difícil";
             }
-        }
+
+            this.DialogResult = DialogResult.Yes;
+    }
 
         private void SalvarR_Click(object sender, EventArgs e)
         {
