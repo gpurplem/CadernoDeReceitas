@@ -163,5 +163,17 @@ namespace LivroReceitasDigital
                 ExibirListaReceitas();
             }
         }
+
+        private void btnPesquisarTitulo_Click(object sender, EventArgs e)
+        {
+            String pesquisa = textPesquisaTitulo.Text;
+            dgvListaReceitas.DataSource = ListaReceitas.Where(i => i.Nome.Contains(pesquisa)).ToList();
+        }
+
+        private void btnPesquisaIngrediente_Click(object sender, EventArgs e)
+        {
+            String pesquisa = textPesquisaIngrediente.Text;
+            dgvListaReceitas.DataSource = ListaReceitas.Where(i => i.Ingredientes.Contains(pesquisa)).ToList();
+        }
     }
 }
